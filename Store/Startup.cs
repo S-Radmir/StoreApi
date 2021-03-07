@@ -28,9 +28,8 @@ namespace Store
         public void ConfigureServices(IServiceCollection services)
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<StorageContext>(opt => opt.UseSqlServer(connection));
-            //services.AddDbContext<StorageContext>(opt =>
-            //                                   opt.UseInMemoryDatabase("Store"));
+            services.AddDbContext<StorageContext>(opt => opt.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Storage;Trusted_Connection=True;"));
+            //services.AddDbContext<StorageContext>(opt => opt.UseSqlServer(connection));
 
             services.AddControllers();
         }
