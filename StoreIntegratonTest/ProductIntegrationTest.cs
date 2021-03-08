@@ -12,8 +12,8 @@ namespace StoreIntegratonTest
 {
     public class ProductIntegrationTest
     {
-        private string productStr;
-        [Fact]
+        private Product product = new Product { Name = "Калоши", Description = "Как найк, но лучше. Обувка века" };
+    [Fact]
         public async Task Test_Get_All()
         {
             using (var client = new TestClientProvider().Client)
@@ -30,39 +30,34 @@ namespace StoreIntegratonTest
         {
             using (var client = new TestClientProvider().Client)
             {
-                Product product = new Product { Name = "Калоши", Description = "Как найк, но лучше. Обувка века1" };
                 var response = await client.PostAsync("/api/products",
                     new StringContent(JsonConvert.SerializeObject(product), Encoding.UTF8, "application/json"));
 
-                //response.EnsureSuccessStatusCode();
-                //response.StatusCode.Should().Be(HttpStatusCode.OK);
-                //var content = await response.Content.ReadAsStringAsync();
-
-                productStr = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Console.WriteLine(productStr);
-                Console.ReadLine();
+                response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             }
         }
 
-        //[Fact]
-        //public async Task Test_Delete()
-        //{
-        //    using (var client = new TestClientProvider().Client)
-        //    {
-        //        Product product = JsonConvert.DeserializeObject<Product>(productStr);
-        //        var uri = string.Format(@"/api/values/{0}", product.Id);
-        //        using (var response = await client.DeleteAsync(uri))
-        //        {
-        //            //response.EnsureSuccessStatusCode();
-        //            //response.StatusCode.Should().Be(HttpStatusCode.OK);
-        //            var result = await response.Content.ReadAsStringAsync();
-        //        }
-        //    }
-        //}
+        [Fact]
+        public async Task Test_Delete()
+        {
+            using (var client = new TestClientProvider().Client)
+            {
+                var uri = string.Format(@"/api/products/{0}", product.Id);
+
+                using (var response = await client.DeleteAsync(uri))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                    }
+                }
+
+            }
+        }
 
         //тут где то код с тестами на проверку запросов HttpGet("{id}"), HttpPut("{id}" )
         #region
-        //... не стал писать, тут и будет идентично HttpDelete("{id}")
+        //... не стал писать, тут примерно будет идентично HttpDelete("{id}")
 
         #endregion
     }
