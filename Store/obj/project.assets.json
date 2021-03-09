@@ -8821,19 +8821,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Радмир\\.nuget\\packages\\": {}
+    "C:\\Users\\SufiyanovRR\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Радмир\\source\\repos\\Store\\Store\\Store.csproj",
+      "projectUniqueName": "D:\\Store\\Store\\Store.csproj",
       "projectName": "Store",
-      "projectPath": "C:\\Users\\Радмир\\source\\repos\\Store\\Store\\Store.csproj",
-      "packagesPath": "C:\\Users\\Радмир\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Радмир\\source\\repos\\Store\\Store\\obj\\",
+      "projectPath": "D:\\Store\\Store\\Store.csproj",
+      "packagesPath": "C:\\Users\\SufiyanovRR\\.nuget\\packages\\",
+      "outputPath": "D:\\Store\\Store\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Радмир\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\SufiyanovRR\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8896,7 +8900,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -8,59 +8,58 @@ using System.Threading.Tasks;
 using Store.Models;
 using Moq;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace UnitTestSrore.Tests
 {
     public class ProductControllerTest
     {
-        //[Fact]
-        //public void IndexViewDataMessage()
-        //{
-        //    // Arrange
-        //    var mock = new Mock<StorageContext>();
-        //    mock.Setup(repo => repo.Product).Returns(GetProducts());
-        //    var controller = new ProductsController(mock.Object);
-
-        //    // Act
-        //    Task<ActionResult<IEnumerable<Product>>> result = controller.GetProduct() as Task<ActionResult<IEnumerable<Product>>>;
-
-        //    // Assert
-        //    var viewResult = Assert.IsType<Task<ActionResult<IEnumerable<Product>>>>(result);
-        //    var model = Assert.IsAssignableFrom<IEnumerable<Product>>(viewResult);
-        //    Assert.Equal(GetProducts().Count(), model.Count());
-        //}
-
-        //[Fact]
-        //public void IndexViewResultNotNull()
-        //{
-        //    // Arrange
-        //    HomeController controller = new HomeController();
-        //    // Act
-        //    ViewResult result = controller.Index() as ViewResult;
-        //    // Assert
-        //    Assert.NotNull(result);
-        //}
-
-        //[Fact]
-        //public void IndexViewNameEqualIndex()
-        //{
-        //    // Arrange
-        //    HomeController controller = new HomeController();
-        //    // Act
-        //    ViewResult result = controller.Index() as ViewResult;
-        //    // Assert
-        //    Assert.Equal("Index", result?.ViewName);
-        //}
-
-        Microsoft.EntityFrameworkCore.DbSet<Store.Models.Product> GetProducts()
+        DbContextOptions<StorageContext> options;
+        public ProductControllerTest()
         {
-            var products = new List<Product>
+            options = new DbContextOptionsBuilder<StorageContext>()
+           .UseInMemoryDatabase(databaseName: "Store")
+           .Options;
+
+            // Insert seed data into the database using one instance of the context
+            using (var context = new StorageContext(options))
             {
-                new Product { Id =1, Name = "Товар 1", Description = "товар номер раз" },
-                new Product { Id =2, Name = "Товар 2", Description = "товар номер два" },
-                new Product { Id =3, Name = "Товар 3", Description = "товар номер три" },
-            };
-            return (Microsoft.EntityFrameworkCore.DbSet<Product>)products.AsEnumerable();
+                if (context.Product.Count() < 1)
+                {
+                    context.Product.Add(new Product { Id = 1, Name = "Товар 1", Description = "товар номер раз" });
+                    context.Product.Add(new Product { Id = 2, Name = "Товар 2", Description = "товар номер два" });
+                    context.Product.Add(new Product { Id = 3, Name = "Товар 3", Description = "товар номер три" });
+
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        [Fact]
+        public void IndexViewResultProduct()
+        {
+            // Use a clean instance of the context to run the test
+            using (var context = new StorageContext(options))
+            {
+                ProductsController storeRepository = new ProductsController(context);
+                var products = storeRepository.GetProduct(3);
+
+                Assert.Equal("Товар 3", products.Result.Value.Name);
+            }
+
+        }
+
+        [Fact]
+        public void IndexViewResult()
+        {
+            // Use a clean instance of the context to run the test
+            using (var context = new StorageContext(options))
+            {
+                ProductsController storeRepository = new ProductsController(context);
+                var products = storeRepository.GetProduct();
+
+                Assert.Equal(3, products.Result.Value.Count());
+            }
         }
 
     }

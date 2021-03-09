@@ -9687,19 +9687,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Радмир\\.nuget\\packages\\": {}
+    "C:\\Users\\SufiyanovRR\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Радмир\\source\\repos\\Store\\StoreIntegratonTest\\StoreIntegratonTest.csproj",
+      "projectUniqueName": "D:\\Store\\StoreIntegratonTest\\StoreIntegratonTest.csproj",
       "projectName": "StoreIntegratonTest",
-      "projectPath": "C:\\Users\\Радмир\\source\\repos\\Store\\StoreIntegratonTest\\StoreIntegratonTest.csproj",
-      "packagesPath": "C:\\Users\\Радмир\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Радмир\\source\\repos\\Store\\StoreIntegratonTest\\obj\\",
+      "projectPath": "D:\\Store\\StoreIntegratonTest\\StoreIntegratonTest.csproj",
+      "packagesPath": "C:\\Users\\SufiyanovRR\\.nuget\\packages\\",
+      "outputPath": "D:\\Store\\StoreIntegratonTest\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Радмир\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\SufiyanovRR\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9713,8 +9717,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Радмир\\source\\repos\\Store\\Store\\Store.csproj": {
-              "projectPath": "C:\\Users\\Радмир\\source\\repos\\Store\\Store\\Store.csproj"
+            "D:\\Store\\Store\\Store.csproj": {
+              "projectPath": "D:\\Store\\Store\\Store.csproj"
             }
           }
         }
@@ -9773,14 +9777,11 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

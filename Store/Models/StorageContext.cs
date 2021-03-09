@@ -12,8 +12,8 @@ namespace Store.Models
             : base(options)
         {
         }
-        public DbSet<Storage> Storage { get; set; }
-        public DbSet<Product> Product { get; set; }
-        public DbSet<ProductList> ProductList { get; set; }
+        public virtual DbSet<Storage> Storage { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<ProductList> ProductList { get; set; }
     }
 }

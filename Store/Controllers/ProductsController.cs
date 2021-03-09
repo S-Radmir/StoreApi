@@ -24,11 +24,6 @@ namespace Store.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProduct()
         {
-            //var product = new Product { Name = "Калоши", Description = "Лучшая обувка" };
-            //_context.Product.Add(product);
-            //await _context.SaveChangesAsync();
-            //var products = _context.Product;
-
             return await _context.Product.ToListAsync();
         }
 
